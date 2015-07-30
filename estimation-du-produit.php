@@ -9,21 +9,18 @@ extract($_POST);
 
 if (isset($_POST) && isset($brand) && isset($capacity) && isset($state)) {
 
-	// $date = date("Y-m-d H:i:s");
+	// Insertion en BDD si besoin est
 
-	// $random = str_shuffle(0123456789);
+	$date = date("Y-m-d H:i:s");
 
-	// $link = mysqli_connect("localhost","root","motdepasselocalhostgwen","PhoneMarket") or die("Erreur connexon à la BDD");
+	$link = mysqli_connect("localhost","root","motdepasselocalhostgwen","PhoneMarket") or die("Erreur connexon à la BDD");
 
-	// if (isset($_POST) && isset($apple)) {
-	// mysqli_query($link , "INSERT INTO phone(brand, capacity, state, modal, date) VALUES ('$brand', '$capacity', '$state', '$apple', '$date')");
-	// }
-	// if (isset($_POST) && isset($samsung)) {
-	// mysqli_query($link , "INSERT INTO phone(brand, capacity, state, modal, date) VALUES ('$brand', '$capacity', '$state', '$samsung' , '$date')");
-	// }
-	// echo "<h1>Réussi</h1>";
-
-	// header('Location: ../index.php?enregistrement$random');
+	if ($brand == "apple") {
+	mysqli_query($link , "INSERT INTO phone(brand, capacity, state, modal, date, id_crypt) VALUES ('$brand', '$capacity', '$state', '$apple', '$date', '$identifiant')");
+	}
+	if ($brand == "samsung") {
+	mysqli_query($link , "INSERT INTO phone(brand, capacity, state, modal, date, id_crypt) VALUES ('$brand', '$capacity', '$state', '$samsung' , '$date', '$identifiant')");
+	}
 
 ?>
 
@@ -36,9 +33,9 @@ if (isset($_POST) && isset($brand) && isset($capacity) && isset($state)) {
         <div class="container">
           <h1 class="landing-header-title">Estimation du prix du téléphone</h1>
           <p class="landing-header-intro">En ligne, sans avocat.</p>
-          	<div class="col-md-12 bloc_produit">
+          	<div class="col-md-8 col-md-offset-2 bloc_produit">
           		<div class="col-md-6">
-          	<?php if ($_POST['brand'] == "Samsung") {
+          	<?php if ($_POST['brand'] == "samsung") {
           		switch ($_POST['samsung']) {
           			case 'Galaxy s3':
           				echo "<img src=img/galaxy_s3.png>";
@@ -56,7 +53,7 @@ if (isset($_POST) && isset($brand) && isset($capacity) && isset($state)) {
           				echo "autre";
           				break;
       				} 
-          		} elseif ($_POST['brand'] == "Apple") {
+          		} elseif ($_POST['brand'] == "apple") {
           		switch ($_POST['apple']) {
           			case 'iphone 5' || 'iphone 5c' || 'iphone 5s':
           				echo "<img src=img/iphone_5.png>";
@@ -81,7 +78,7 @@ if (isset($_POST) && isset($brand) && isset($capacity) && isset($state)) {
       			</div>	
 	          		<div class="col-md-6 produit_description">
 	          			<ul>
-	          				<?php if ($_POST['brand'] == "Samsung") { ?>
+	          				<?php if ($_POST['brand'] == "samsung") { ?>
 	          				<li>Marque : <?php echo $_POST['brand'] ?></li>
 	          				<li>Modèle : <?php echo $_POST['samsung'] ?></li>
 	          				<li>Capacité de : <?php echo $_POST['capacity'] ?></li>
@@ -102,7 +99,7 @@ if (isset($_POST) && isset($brand) && isset($capacity) && isset($state)) {
 		          							break;
 	          							default;
 	          								header('Location: index.php'); ?></li>
-          					<?php 	} }elseif($_POST['brand'] == "Apple"){ ?>
+          					<?php 	} }elseif($_POST['brand'] == "apple"){ ?>
 	          				<li>Marque : <?php echo $_POST['brand'] ?></li>
 	          				<li>Modèle : <?php echo $_POST['apple'] ?></li>
 	          				<li>Capacité de : <?php echo $_POST['capacity'] ?></li>
@@ -125,12 +122,30 @@ if (isset($_POST) && isset($brand) && isset($capacity) && isset($state)) {
 	          								header('Location: index.php'); ?></li>
           					<?php } } ?>
 	          			</ul>
+	          			<button class="btn-custom" id="vente_trigger">Je vends</button>
+	          			<a href=<?php echo "php/redirect_master.php?delete=$_POST[identifiant]"; ?>><button class="btn-cancel">Retour</button></a>
 	          		</div>
             </div>
+
+
+            <!-- Si 'lutilisateru clique sur je vends' -->
+
+            	<form class="col-md-8 col-md-offset-2 bloc_vente" action=<?php echo "index.php?validation_ticket=$_POST[identifiant]"; ?> method="POST">
+            		<input type="text" name="nom" placeholder="Nom" required />
+            		<input type="text" name="prenom" placeholder="Prénom" required />
+            		<input type="text" name="adresse" placeholder="Adresse postale" required />
+            		<input type="email" name="email" placeholder="Adresse email" required />
+            		<input type="telephone" name="telephone" placeholder="Votre numéro de téléphone" required />
+            		<br>
+            		<button class="btn-custom">Valider</button>
+            	</form>
+        </div>
 <?php }	
 
 else{
-	echo "<h1>Erreur</h1>";
+	header('Location: include/404.php');
 }
+
+include "include/footer.php";
 
  ?>
