@@ -1,54 +1,70 @@
-<header class="navbar navbar-default navbar-fixed-top" role="contentinfo">
-            <div class="container">  
-            <a href="index.php"> 
-              <h1>Phone Market</h1></a>
-            </div>
-</header>
-    <nav class="navbar navbar-main">
-      <div class="container">
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-            <a href="Reglez-votre-litige-en-5-minutes-45785.php" class="navbar-title">Litiges du quotidien</a>
-            </li>
-            <li class="dropdown">
-            <a href="Affaire-familiale/index.php" class="navbar-title">Affaires familiales</a>
-            </li>
-            <li class="dropdown">
-            <a href="Saisissez-le-tribunal-des-Affaires-de-securite-sociale-15489.php" class="navbar-title">RSI / URSSAF / CPAM</a>
-            </li>
-            <li class="dropdown">
-            <a href="Contestez-legalement-vos-PV-d-exces-de-vitesse-78154.php" class="navbar-title">Permis de conduire</a>
-            </li>
-            <li class="dropdown">
-              <a href="Saisissez-le-conseil-des-Prud-hommes-789445.php" class="navbar-title">Prud' hommes</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="bloc-responsive">
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <p>Equipe juridique : 09.66.85.10.21<span>(Prix d'un appel local)</span></p>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a href="Reglez-votre-litige-en-5-minutes-45785.php">Litiges du quotidien</a></li>
-              <li><a href="Saisissez-le-JAF-20145.php">Affaire familiales</a></li>
-              <li><a href="Saisissez-le-tribunal-des-Affaires-de-securite-sociale-15489.php">RSI / URSSAF / CPAM</a></li>
-              <li><a href="Contestez-legalement-vos-PV-d-exces-de-vitesse-78154.php">Permis de conduire</a></li>
-              <li><a href="Saisissez-le-conseil-des-Prud-hommes-789445.php">Prud'hommes</a></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
+<div class="col-md-12 navbar header_brand navbar-fixed-top"><a href="index.php">Phone Market</a></div>
+<nav class="navbar navbar-default">
+  <div class="container">
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Litiges du quotidien</a></li>
+        <li><a href="#">Affaires familiales</a></li>
+        <li><a href="#">RSI / URSSAF / CPAM</a></li>
+        <li><a href="#">Permis de conduire</a></li>
+        <li><a href="#">Prud'hommes</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-responsive">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Phone Market</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
