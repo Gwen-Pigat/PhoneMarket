@@ -5,26 +5,29 @@
 
 </head>
 <body id="body" class="landing home">
-  <div class="page">
     
-    <?php include "include/navbar.php"; ?>
+    <?php include "include/navbar.php"; include "include/connexion.php";
+
+    if ($_GET['validation_ticket']) {
+        if (isset($_POST) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['adresse']) && isset($_POST['email']) && isset($_POST['telephone'])) {
+            if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse']) && !empty($_POST['email']) && !empty($_POST['telephone'])) {
+              extract($_POST);
+              mysqli_query($link, "UPDATE phone SET nom='$nom', prenom='$prenom', location='$adresse', email='$email', telephone='$telephone' WHERE id_crypt='$_GET[validation_ticket]'") or die("Erreur lors de la requête SQL");
+            }
+        }
+    } 
+    ?>
 
     <section class="landing-header homepage-background">
         <div class="container">
           <h1 class="landing-header-title">Vendez votre téléphone au meilleur prix</h1>
           <p class="landing-header-intro">En ligne, sans avocat.</p>
-
-          <?php 
-if (isset($_GET['enregistrement'])) {
-  echo "<div class='col-md-8 col-md-offset-2 enregistrement'><h1>Votre produit à bien été enregistré</h1><img src='img/loading.gif' /></div>";
-}
- ?>
               <form action="estimation-du-produit.php" method="post" class="col-md-12 formulaire_accueil">
                 <div class="col-md-8 col-md-offset-2">
                   <select name="brand" id="brand_select">
                       <option selected="true" disabled="disabled" id="default">Marque</option>
-                      <option id="apple">Apple</option>
-                      <option id="samsung">Samsung</option>
+                      <option value="apple" id="apple">Apple</option>
+                      <option value="samsung" id="samsung">Samsung</option>
                   </select>
                   <select name="apple" id="brand_apple">
                       <option value="iphone 4">iPhone 4</option>
@@ -40,8 +43,8 @@ if (isset($_GET['enregistrement'])) {
                       <option value="Galaxy s5">Galaxy S5</option>
                       <option value="Galaxy s6">Galaxy S6</option>
                   </select> 
-                  </div>
-                  <div class="col-md-8 col-md-offset-2">
+                </div>
+                <div class="col-md-8 col-md-offset-2">
                   <select name="capacity" id="capacity"> 
                      <option selected="true" disabled="disabled" value="default">Capacité</option> 
                      <option value="08 go">08 Go</option> 
@@ -56,8 +59,9 @@ if (isset($_GET['enregistrement'])) {
                      <option id="fonctionnel" value="Fonctionnel">Fonctionnel</option>
                      <option id="non_fonctionnel" value="Non fonctionnel">Non fonctionnel</option> 
                   </select>
-                <br>
-                <button class="btn btn-green"><strong>Valider</strong></button>
+                  <br>
+                  <input type="hidden" name="identifiant" value="<?php echo str_shuffle('0123456789azertyuiop'); ?>" />
+                  <button class="btn btn-green"><strong>Valider</strong></button>
                 </div>
               </form>
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
@@ -103,6 +107,7 @@ if (isset($_GET['enregistrement'])) {
                     </ul>
                   </div>
               </div>
+
               <script type="text/javascript">
 
               $(function() {
@@ -153,176 +158,75 @@ if (isset($_GET['enregistrement'])) {
               </script>
         </div>
     </section>
-
-    <section class="three-steps text-center pad">
-          <div class="container">
-            <h2 class="section-heading">Toute la justice.com : saisir en ligne la juridiction compétente sans avocat.</h2>
-           <p>La plupart des juridictions peuvent se saisir sans avocat. Pour autant, le droit demeure une matière complexe et inabordable.<br /> <br>
-           Toute la justice.com vous permet de saisir le tribunal dans un grand nombre de cas directement en ligne et sans avocat.
-           Nous vous aidons dans vos démarches juridiques et administratives au travers de l'assistance de notre équipe juridique.</p><br /><br />
+    <section>
+        <div class="col-md-12 three-steps text-center">
+          <div class="col-md-4"><i class="fa fa-hourglass-start fa-5x"></i><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+          <div class="col-md-4"><i class="fa fa-hourglass-half fa-5x"></i><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+          <div class="col-md-4"><i class="fa fa-hourglass-end fa-5x"></i><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
         </div>
-    </section>
-
-  <div class="background col-md-12 col-sm-12 col-xs-12">
-
-    <h3 class="absolute">Domaines d'intervention</h3>
-
-    <div id="features" class="container-fluid row3 features">
-
-            <div class="row">
-                <div class="col-sm-3 col-xs-6 feature">
-                    <div class="f-title">Séparation</div>
-                    <div class="f-details">Fixez ou révisez les droits sur les enfants.</div>
-                </div>
-                <div class="col-sm-3 col-xs-6 feature">
-                    <div class="f-title">Après-divorce</div>
-                    <div class="f-details">Modifiez votre jugement rendu par le JAF.</div>
-                </div>
-               <div class="col-sm-3 col-xs-6 feature">
-                    <div class="f-title">Cotisations RSI / URSSAF</div>
-                    <div class="f-details">Contestez les cotisations, contraintes, etc.</div>
-                </div>
-                <div class="col-sm-3 col-xs-6 feature">
-                    <div class="f-title">Accidents du travail</div>
-                    <div class="f-details">Indemnisation des accidents du travail.</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3 col-xs-6 feature">
-                    <div class="f-title">Litiges entre particuliers</div>
-                    <div class="f-details">Baux d'habitation, voisinage, etc.</div>
-                </div>
-                <div class="col-sm-3 col-xs-6 feature">
-                    <div class="f-title">Litiges avec une société</div>
-                    <div class="f-details">Litiges artisans, commercants, opérateurs, etc.</div>
-                </div>
-                <div class="col-sm-3 col-xs-6 feature">
-                    <div class="f-title">Permis de conduire</div>
-                    <div class="f-details">Contestez vos PV d'excès de vitesse.</div>
-                </div>
-               <div class="col-sm-3 col-xs-6 feature">
-                    <div class="f-title">Prud' hommes</div>
-                    <div class="f-details">Contestation de licenciement, heures suplémentaires, etc.</div>
-                </div>
-           </div>
-      </div>
-    </div>
-
-<div id="testimonials" class="carousel-main container-fluid row6">
-            <div class="col-md-12">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                        <li data-target="#myCarousel" data-slide-to="3"></li>
-                    </ol>
-
-                
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <div class="testimonial">
-                                <div class="testimonial-title">Gwenaël P.</div>
-                                <div class="testimonial-details">Merci à vous car j'ai gagné le procès qui m'opposait à mon voisin. <br>Merci mille fois.</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial">
-                                <div class="testimonial-title">Julie B.</div>
-                                <div class="testimonial-details">Il ne me restait plus que 2 points sur mon permis, que j’allais perdre puisque j’ai été flashé sur l’A10 récemment. Dès que j’ai reçu le PV, j’ai fait appel à Toutelajutice.com. J’ai donc conservé mes 2 points, mon permis, et mon boulot ! Un grand bravo !</div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="testimonial">
-                                <div class="testimonial-title">Bernard H.</div>
-                                <div class="testimonial-details">L'URSAFF m'a demandé de payer des sommes que je ne comprenais pas et après plusieurs courriers ils n'ont rien voulu savoir. J'ai tenté le tout pour le tout avec vous, et je ne voulais pas passer par un avocat. J'ai immédiatement été contacté par leur service et on a trouvé un terrain d'entente.</div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="testimonial">
-                                <div class="testimonial-title">Arthur K.</div>
-                                <div class="testimonial-details">Merci à vous de permettre aux justiciables de contester facilement un PV sans se ruiner. Un grand service rendu, j'attends avec impatience la réponse.</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-</div>
-    
-  </div>
-
-</div>
-
-<footer class="l-footer">
-
-  <div class="footer-bottom">
-    <div class="container">
-        <div class="col-md-4">
-          <a href="Saisissez-le-JAF-20145.php">
-          <h2 class="footer-title">Affaires familiales</h2></a>
-         <ul>
-            <li><a href="php/Fiches-pratiques/Affaires-familiales/Liste-complete-Pension-alimentaire-00233.php">Pension alimentaire</a></li>
-            <li><a href="php/Fiches-pratiques/Affaires-familiales/Liste-complete-Prestation-compensatoire-11245.php">Prestation compensatoire</a></li>
-            <li><a href="php/Fiches-pratiques/Affaires-familiales/Liste-complete-Garde-des-enfants-66565.php">Garde des enfants</a></li>
-            <li><a href="php/Fiches-pratiques/Affaires-familiales/Liste-complete-Droit-des-grands-parents-02156.php">Droit des grands-parents</a></li>
-            <li><a href="php/Fiches-pratiques/Affaires-familiales/Liste-complete-Informations-sur-le-JAF-9995.php">informations sur le JAF</a></li>
-          </ul> 
+      </section>
+        <div class="background col-md-12 col-sm-12 col-xs-12">
+          <h3 class="absolute">Domaines d'intervention</h3>
+          <div id="features" class="container features">
+              <div class="row">
+                  <div class="col-sm-3 col-xs-6 feature">
+                      <h4 class="f-title">Séparation</h4>
+                      <div class="f-details">Fixez ou révisez les droits sur les enfants.</div>
+                  </div>
+                  <div class="col-sm-3 col-xs-6 feature">
+                      <h4 class="f-title">Après-divorce</h4>
+                      <div class="f-details">Modifiez votre jugement rendu par le JAF.</div>
+                  </div>
+                 <div class="col-sm-3 col-xs-6 feature">
+                      <h4 class="f-title">Cotisations RSI / URSSAF</h4>
+                      <div class="f-details">Contestez les cotisations, contraintes, etc.</div>
+                  </div>
+                  <div class="col-sm-3 col-xs-6 feature">
+                      <h4 class="f-title">Accidents du travail</h4>
+                      <div class="f-details">Indemnisation des accidents du travail.</div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-3 col-xs-6 feature">
+                      <h4 class="f-title">Litiges entre particuliers</h4>
+                      <div class="f-details">Baux d'habitation, voisinage, etc.</div>
+                  </div>
+                  <div class="col-sm-3 col-xs-6 feature">
+                      <h4 class="f-title">Litiges avec une société</h4>
+                      <div class="f-details">Litiges artisans, commercants, opérateurs, etc.</div>
+                  </div>
+                  <div class="col-sm-3 col-xs-6 feature">
+                      <h4 class="f-title">Permis de conduire</h4>
+                      <div class="f-details">Contestez vos PV d'excès de vitesse.</div>
+                  </div>
+                  <div class="col-sm-3 col-xs-6 feature">
+                      <h4 class="f-title">Prud' hommes</h4>
+                      <div class="f-details">Contestation de licenciement, heures suplémentaires, etc.</div>
+                  </div>
+             </div>
+          </div>
         </div>
-        <div class="col-md-4">
-          <a href="Reglez-votre-litige-en-5-minutes-45785.php">
-          <h2 class="footer-title">Litiges du quotidien</h2></a>
-
-        </div>
-        <div class="col-md-4">
-          <a href="Saisissez-le-tribunal-des-Affaires-de-securite-sociale-15489.php">
-          <h2 class="footer-title">Contentieux RSI / URSSAF</h2></a>
-
-        </div>
-
-     </div>  
-
-     <div class="container">
-     <div class="col-md-4">
-          <a href="index.php">
-          <h2 class="footer-title">Toutelajustice.com</h2></a>
-          <ul>
-            <li><a href="Conditions-generales-de-vente-51489.php">CGV</a></li>
-            <li><a href="Reglez-votre-litige-en-5-minutes-45785.php">Litiges-du-quotidien</a></li>
-            <li><a href="Saisissez-le-JAF-20145.php">Affaires familiales</a></li>
-            <li><a href="Saisissez-le-tribunal-des-Affaires-de-securite-sociale-15489.php">Contentieux RSI / URSSAF</a></li>
-            <li><a href="Contestez-legalement-vos-PV-d-exces-de-vitesse-78154.php">Permis de conduire</a></li>
-            <li><a href="Saisissez-le-conseil-des-Prud-hommes-789445.php">Prud'hommes</a></li>
-          </ul>
-        </div> 
-        <div class="col-md-4">
-          <a href="Contestez-legalement-vos-PV-d-exces-de-vitesse-78154.php">
-          <h2 class="footer-title">Permis de conduire</h2></a>
-        </div>
-
-        <div class="col-md-4">
-          <a href="Saisissez-le-conseil-des-Prud-hommes-789445.php">
-          <h2 class="footer-title">Prud' hommes</h2></a>
-           
-        </div>
-         
-       </div>  
-  </div>
-<div class="footer-top">
-    <div class="container">
-      <div class="row">
-      </div>
-      <p class="footer-copyright">©  Toutelajustice.com 2015. Tous droits réservés.</p>
-    </div>
-  </div>
-</footer>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <?php include "include/footer.php"; ?>
+  </body>
 </html>
