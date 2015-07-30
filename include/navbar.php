@@ -1,10 +1,15 @@
-<div class="col-md-12 navbar header_brand navbar-fixed-top"><a href="index.php">Phone Market</a></div>
+<div class="col-md-12 navbar header_brand navbar-fixed-top"><a href="index.php">Phone Market</a>
+<form method="POST" action="php/redirect_master.php?identifiant_connexion">
+<input class="col-lg-6 col-md-6 col-sm-6 col-xs-6" type="text" name="identifiant" placeholder="Votre identifiant" required>
+<button class="btn btn-success_custom col-lg-4 col-md-4 col-sm-4 col-xs-4">Valider</button>
+</form>
+</div>
 <nav class="navbar navbar-default">
   <div class="container">
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <li><a href="#">Litiges du quotidien</a></li>
         <li><a href="#">Affaires familiales</a></li>
         <li><a href="#">RSI / URSSAF / CPAM</a></li>

@@ -10,10 +10,32 @@
 
 <?php include "../include/connexion.php";
 
-if (isset($_GET) && isset($_GET['delete'])) {
+if (isset($_GET) && isset($_GET['delete']) && !empty($_GET['delete'])) {
 	mysqli_query($link, "DELETE FROM phone WHERE id_crypt='$_GET[delete]'");
 	echo "<div class='col-md-4 col-md-offset-4' id='loading'><center><span>Redirection en cours</span><br /><img src='../img/loading.GIF' /></center></div>";
 	header("Refresh: 3;url=../index.php");
+}
+
+
+if (isset($_GET) && isset($_GET['identifiant_connexion'])) {
+	if (isset($_POST) && isset($_POST['identifiant'])) {
+		if (!empty($_POST['identifiant'])) {
+			$row = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM phone WHERE id_crypt='$_POST[identifiant]'"));
+			if ($row) {
+				echo "<div class='col-md-4 col-md-offset-4' id='loading'><center><span>Redirection en cours</span><br /><img src='../img/loading.GIF' /></center></div>";
+				header("Refresh: 3;url=../index.php");
+			}
+			else{
+				echo "<script>alert(\"Identifiant Incorrect !!\")</script>";
+				header("Refresh: 0; url=../index.php");
+			}
+		}
+	}
+}
+
+
+else{
+	header('Location: ../index.php');
 }
 
 

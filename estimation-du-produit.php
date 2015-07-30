@@ -122,7 +122,7 @@ if (isset($_POST) && isset($brand) && isset($capacity) && isset($state)) {
 	          								header('Location: index.php'); ?></li>
           					<?php } } ?>
 	          			</ul>
-	          			<button class="btn-custom" id="vente_trigger">Je vends</button>
+	          			<button class="btn-custom vente_trigger">Je vends</button>
 	          			<a href=<?php echo "php/redirect_master.php?delete=$_POST[identifiant]"; ?>><button class="btn-cancel">Retour</button></a>
 	          		</div>
             </div>
@@ -131,14 +131,23 @@ if (isset($_POST) && isset($brand) && isset($capacity) && isset($state)) {
             <!-- Si 'lutilisateru clique sur je vends' -->
 
             	<form class="col-md-8 col-md-offset-2 bloc_vente" action=<?php echo "index.php?validation_ticket=$_POST[identifiant]"; ?> method="POST">
-            		<input type="text" name="nom" placeholder="Nom" required />
+            		<div class="form-group">
+                <input type="text" name="nom" placeholder="Nom" required />
+                
             		<input type="text" name="prenom" placeholder="Prénom" required />
+
             		<input type="text" name="adresse" placeholder="Adresse postale" required />
+              
             		<input type="email" name="email" placeholder="Adresse email" required />
             		<input type="telephone" name="telephone" placeholder="Votre numéro de téléphone" required />
+                
             		<br>
+                <div class="col-md-4 col-md-offset-4" style="margin-top: 1%">
             		<button class="btn-custom">Valider</button>
-            	</form>
+                <span class="btn-cancel vente_trigger">Retour</span>
+                </div>
+            	</div>
+              </form>
         </div>
 <?php }	
 

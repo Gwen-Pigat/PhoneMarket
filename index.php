@@ -8,7 +8,7 @@
     
     <?php include "include/navbar.php"; include "include/connexion.php";
 
-    if ($_GET['validation_ticket']) {
+    if (isset ($_GET['validation_ticket']) && !empty($_GET['validation_ticket'])) {
         if (isset($_POST) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['adresse']) && isset($_POST['email']) && isset($_POST['telephone'])) {
             if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse']) && !empty($_POST['email']) && !empty($_POST['telephone'])) {
               extract($_POST);
@@ -23,7 +23,7 @@
           <h1 class="landing-header-title">Vendez votre téléphone au meilleur prix</h1>
           <p class="landing-header-intro">En ligne, sans avocat.</p>
               <form action="estimation-du-produit.php" method="post" class="col-md-12 formulaire_accueil">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
                   <select name="brand" id="brand_select">
                       <option selected="true" disabled="disabled" id="default">Marque</option>
                       <option value="apple" id="apple">Apple</option>
@@ -158,75 +158,65 @@
               </script>
         </div>
     </section>
-    <section>
-        <div class="col-md-12 three-steps text-center">
-          <div class="col-md-4"><i class="fa fa-hourglass-start fa-5x"></i><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 three-steps text-center">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fa fa-hourglass-start fa-5x"></i><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
-          <div class="col-md-4"><i class="fa fa-hourglass-half fa-5x"></i><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fa fa-hourglass-half fa-5x"></i><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
-          <div class="col-md-4"><i class="fa fa-hourglass-end fa-5x"></i><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fa fa-hourglass-end fa-5x"></i><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
         </div>
-      </section>
         <div class="background col-md-12 col-sm-12 col-xs-12">
           <h3 class="absolute">Domaines d'intervention</h3>
-          <div id="features" class="container features">
               <div class="row">
-                  <div class="col-sm-3 col-xs-6 feature">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 feature ">
                       <h4 class="f-title">Séparation</h4>
                       <div class="f-details">Fixez ou révisez les droits sur les enfants.</div>
                   </div>
-                  <div class="col-sm-3 col-xs-6 feature">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 feature">
                       <h4 class="f-title">Après-divorce</h4>
                       <div class="f-details">Modifiez votre jugement rendu par le JAF.</div>
                   </div>
-                 <div class="col-sm-3 col-xs-6 feature">
+                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 feature">
                       <h4 class="f-title">Cotisations RSI / URSSAF</h4>
                       <div class="f-details">Contestez les cotisations, contraintes, etc.</div>
                   </div>
-                  <div class="col-sm-3 col-xs-6 feature">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 feature">
                       <h4 class="f-title">Accidents du travail</h4>
                       <div class="f-details">Indemnisation des accidents du travail.</div>
                   </div>
               </div>
               <div class="row">
-                  <div class="col-sm-3 col-xs-6 feature">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 feature">
                       <h4 class="f-title">Litiges entre particuliers</h4>
                       <div class="f-details">Baux d'habitation, voisinage, etc.</div>
                   </div>
-                  <div class="col-sm-3 col-xs-6 feature">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 feature">
                       <h4 class="f-title">Litiges avec une société</h4>
                       <div class="f-details">Litiges artisans, commercants, opérateurs, etc.</div>
                   </div>
-                  <div class="col-sm-3 col-xs-6 feature">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 feature">
                       <h4 class="f-title">Permis de conduire</h4>
                       <div class="f-details">Contestez vos PV d'excès de vitesse.</div>
                   </div>
-                  <div class="col-sm-3 col-xs-6 feature">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 feature">
                       <h4 class="f-title">Prud' hommes</h4>
                       <div class="f-details">Contestation de licenciement, heures suplémentaires, etc.</div>
                   </div>
-             </div>
           </div>
         </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <?php include "include/footer.php"; ?>
   </body>
 </html>
