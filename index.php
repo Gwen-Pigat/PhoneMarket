@@ -8,14 +8,20 @@
     
     <?php include "include/navbar.php"; include "include/connexion.php";
 
-    if (isset ($_GET['validation_ticket']) && !empty($_GET['validation_ticket'])) {
-        if (isset($_POST) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['adresse']) && isset($_POST['email']) && isset($_POST['telephone'])) {
-            if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse']) && !empty($_POST['email']) && !empty($_POST['telephone'])) {
-              extract($_POST);
-              mysqli_query($link, "UPDATE phone SET nom='$nom', prenom='$prenom', location='$adresse', email='$email', telephone='$telephone' WHERE id_crypt='$_GET[validation_ticket]'") or die("Erreur lors de la requête SQL");
-            }
-        }
-    } 
+    if (isset($_GET) && isset($_GET['envoi_success']) && !empty($_GET['envoi_success'])) {
+
+      $row = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM phone WHERE id_crypt='$_GET[envoi_success]'"));
+
+      if ($row) {
+         echo "<script>alert(\"Votre demande à bien été envoyé, vous pourrez suivre l'avancement de celle-ci en renseignant l'identifiant que nous vous avons envoyé par mail ($_GET[envoi_success])\")</script>";
+         echo "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=index.php'>";
+      }
+      else{
+        echo "<script>alert(\"Erreur\")</script>";
+        echo "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=index.php'>";
+      }
+    }
+
     ?>
 
     <section class="landing-header homepage-background">
