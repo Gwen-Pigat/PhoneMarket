@@ -42,8 +42,8 @@ elseif (isset ($_GET) && isset ($_GET['validation_ticket']) && !empty($_GET['val
           mysqli_query($link, "UPDATE phone SET nom='$nom', prenom='$prenom', location='$adresse', email='$email', telephone='$telephone' WHERE id_crypt='$_GET[validation_ticket]'") or die("Erreur lors de la requête SQL");
           echo "<div class='col-md-6 col-md-offset-3' id='loading_1'><center><span>Envoi de votre demande...</span><br /><img src='../img/loading_1.GIF' /></center></div>";
 			header("Refresh: 5;url=../index.php?envoi_success=$_GET[validation_ticket]");
-        }
-    }
+        
+}    }
 } 
 
 
