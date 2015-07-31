@@ -130,7 +130,7 @@ if (isset($_POST) && isset($brand) && isset($capacity) && isset($state)) {
 
             <!-- Si 'lutilisateru clique sur je vends' -->
 
-            	<form class="col-md-8 col-md-offset-2 bloc_vente" action=<?php echo "index.php?validation_ticket=$_POST[identifiant]"; ?> method="POST">
+            	<form class="col-md-8 col-md-offset-2 bloc_vente" action=<?php echo "php/redirect_master.php?validation_ticket=$_POST[identifiant]"; ?> method="POST">
             		<div class="form-group">
                 <input type="text" name="nom" placeholder="Nom" required />
                 
