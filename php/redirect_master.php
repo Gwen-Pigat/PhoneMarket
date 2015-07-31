@@ -1,5 +1,6 @@
 <html lang="fr">
 <head>
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
@@ -32,6 +33,18 @@ if (isset($_GET) && isset($_GET['identifiant_connexion'])) {
 		}
 	}
 }
+
+
+elseif (isset ($_GET) && isset ($_GET['validation_ticket']) && !empty($_GET['validation_ticket'])) {
+    if (isset($_POST) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['adresse']) && isset($_POST['email']) && isset($_POST['telephone'])) {
+        if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['adresse']) && !empty($_POST['email']) && !empty($_POST['telephone'])) {
+          extract($_POST);
+          mysqli_query($link, "UPDATE phone SET nom='$nom', prenom='$prenom', location='$adresse', email='$email', telephone='$telephone' WHERE id_crypt='$_GET[validation_ticket]'") or die("Erreur lors de la requête SQL");
+          echo "<div class='col-md-6 col-md-offset-3' id='loading_1'><center><span>Envoi de votre demande...</span><br /><img src='../img/loading_1.GIF' /></center></div>";
+			header("Refresh: 5;url=../index.php?envoi_success=$_GET[validation_ticket]");
+        }
+    }
+} 
 
 
 else{
