@@ -7,6 +7,7 @@ $(document).ready(function(){
 	});
 
 	$("#loading").fadeIn(1000);
+	$("#loading_1").fadeIn(1000);
 
 	$(".box").delay(5000).toggle(2000);
 
