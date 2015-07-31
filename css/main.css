@@ -151,7 +151,7 @@ body{
   padding: 2%;
   background-color: #fff;
   color: #000;
-  font-size: 2vw;
+  font-size: 1vw;
   text-align: justify;
   box-shadow: 0 0 20px 5px #000;
 }
@@ -774,6 +774,23 @@ Réglages du background de la page */
   color: #000;
   text-shadow : 0 0 1px #000;
 }
+
+
+#loading_1{
+  display: none;
+  margin-top: 10%;
+  border: 1px #000 solid;
+  padding: 2%;
+  border-radius: 10%;
+  box-shadow: 0 0 20px 1px #000;
+}
+
+#loading_1 span{
+  font-size: 3vw;
+  color: #000;
+  text-shadow : 0 0 1px #000;
+}
+
 
 /* Animation CSS */
 
